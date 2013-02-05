@@ -1,4 +1,4 @@
-\documentclass{./template/openetcs2}
+\documentclass{./template/openetcs_report}
 \usepackage{color}
 %\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage{verbatim,url,lipsum,enumitem}
@@ -73,7 +73,8 @@
 
 \chapter{Introduction}
 
-The CENELEC standards requires a systematic approach for the development of systems and software for railway control and safeguarding systems. Therefore the following functional steps have to be conducted based on the overall System and Safety Requirements Specifications in the \citeauthor{EN50128:2011}:
+The CENELEC standards requires a systematic approach for the development of systems and software for railway control and safeguarding systems. Therefore the following functional steps have to be conducted based on the overall System and Safety Requirements Specifications in the \citeauthor{EN50128:2011} :
+\FIXME{\em The reference to EN50128 ist shown in the pdf as an ? }
 
 \vspace{-10pt}
 \begin{itemize} [topsep=2pt, partopsep=2pt,itemsep=2pt,parsep=2pt]
@@ -89,11 +90,11 @@ Verification assessment and quality assurance have to be applied across all step
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{Development-lifecycle-EN50128-own.png}
-\caption{Recommanded Development Lifecycle in EN 50128:2011}
+\caption{Recommended Development Lifecycle in EN 50128:2011}
 \label{fig:Development-lifecycle-EN50128}
 \end{figure}
 
-On the base of this lifecycle the software development tool chain has to be able to provide assistance and generate all needed documents for all following eleven phases:
+On the base of this lifecycle the software development tool chain has to be able to provide assistance and generate all needed software and documents for all following eleven phases:
 
 \vspace{-10pt}
 \begin{enumerate} [topsep=2pt, partopsep=2pt,itemsep=2pt,parsep=2pt]
@@ -110,9 +111,9 @@ On the base of this lifecycle the software development tool chain has to be able
   \item Software Maintenance
 \end{enumerate}
 
-As the phase feature different tasks and related documents which have to be generated and used by a number of different personal in various roles a structured development process has to be applied. To be able to prove that all safety properties of the ETCS system are captured in the system requirements and software specifications, as well as that the final software product satisfies all specifications, a formal approach is necessary. As the scope of the openETCS project is to allow formal proof for the ETCS on-board software development, formal methods have to be used to provide the basis for formal proofs. 
+As the phase feature different tasks and related documents which have to be generated and used by a number of different persons in various roles a structured development process has to be applied. To be able to prove that all safety properties of the ETCS system are captured in the system requirements and software specifications, as well as that the final software product satisfies all specifications, a formal approach is necessary. As the scope of the openETCS project is to allow formal proof for the ETCS on-board software development, formal methods have to be used to provide the basis for formal proofs. 
 
-Thereby formal methods is just a generic term for mathematical based procedures covering a number of different functionalities like notations, design techniques and software tools.  A more precise classification has to be used to distinguish the needed components and their requirements. We will use the BMW-Concept which separates between the following three means needed to handle a tasks \citep{Schnieder.1999}:
+Thereby formal methods is just a generic term for mathematical based procedures covering a number of different functionalities like notations, design techniques and software tools.  A more precise classification has to be used to distinguish the needed components and their requirements. We will use the BMW-Concept which separates between the following three means needed to handle tasks \citep{Schnieder.1999}:
 
 
 \vspace{-10pt}
@@ -215,6 +216,7 @@ As most  experts are only involved in a small part of the system development pro
 An overview about all relevant means of description discussed during the interviews and their properties is given in Chapter \ref{chap: MoD}. The methods used for the development of safety relevant software systems and eventual constrains concerning their use in the openETCS project are presented in \ref{chap: methods}. Subsequently chapter \ref{chap: tools} introduces the tools used in practice to apply the means of description according to the methods.
 
 Although to not limit the answers to a certain aspect the last questions concerning the requirements for future methodology, means of description and tools where designed in an open way. Nevertheless, most interviewees focused on tool characteristics. This is comprehensible as in practice  methodology and means of description are implied by the use of tools. As these tool requirements are indirectly connected to more general requirements for the methodology and the means of description a list of common requirements for all components has been established based on the interviews. These are presented in chapter \ref{chap: requirements}.
+\FIXME{\em The reference to requirements ist shown in the pdf as ?? }
 
 \chapter{Means of Description}
 
@@ -240,6 +242,8 @@ Further more the applicability of all means of description in practical applicat
   \item Tool support
 \end{itemize}
 
+\FIXME{\em The criteria list should be extendet with deterministic behaviour. Some languages (example: SysML state machines) do not guarantee determinisc behavior of functions due to ambigious semantics. For safety related function determism is an indispensible criterium ! }
+
 Corresponding with these criteria means of descriptions are suited to be used in different development phases. Overall the following for levels of abstraction have to be supported:
 
 \vspace{-10pt}
@@ -252,6 +256,7 @@ Corresponding with these criteria means of descriptions are suited to be used in
 
 Table \ref{tab:TabMoD-short2} gives an overview of the relevant properties of means of description and techniques used for system  and software development. Therefore also programming languages have been incorporated in this list, which are in general not seen as formal methods. As this list is based on the means of description discussed during the interviews, used in comparable project and the formal methods named in the CENELEC standards, it just provides examples and cannot be seen as complete. The criteria used in table \ref{tab:TabMoD-short2} are adopted from the \citeauthor{VDIVDE3681} and based on the important requirements for means of descriptions named during the interviews. The assessment for each means of description is based on the information provided during the interviews, the CENELEC standards and additional research. For that purpose the instructions manuals and  bibliographies of techniques were examined.
 
+
 \begin{center}
    \begin{landscape}
 %\begin{sidewaystable}
@@ -259,7 +264,6 @@ Table \ref{tab:TabMoD-short2} gives an overview of the relevant properties of me
 
 \caption{Characterisation for relevant Means of Description in basis of  VDI/VDE 3681:2005}
 \label{tab:TabMoD-short2}
-
 
 
 \begin{tabular}{|m{6cm}|m{0.8cm}|m{0.5cm}|m{0.8cm}|m{0.8cm}|m{0.8cm}|m{0.8cm}|m{0.8cm}|m{0.8cm}|m{0.5cm}||m{0.8cm}|m{1.5cm}|m{1.5cm}|m{2cm}|}
@@ -284,14 +288,14 @@ Ada and Spark&MoD&o&T&+&+&-&-&+&+&&&+&+ \\ \hline
 Alloy&MoD&+&M&+&+&-&-&-&+&o&+&+&\\ \hline
 CNL (Controlled Natural Language)&MoD&+&T, M&-&o&-&o&-&o&o&+&& \\ \hline
 HOL (High Order Logic)&MoD&+&M&+&+&+&-&-&o&o&+&& \\ \hline
-Lustre/ Textual Scade&MoD&+&T&+&+&-&-&o&+&o&+&+& \\ \hline
+Lustre/ Textual and graphical Scade&MoD&+&T, G&+&+&-&-&o&+&o&+&+&+ \\ \hline
 OBJ&MoD&+&M&+&o&-&&&&&&& \\ \hline
 Timed Petri Nets&MoD&+&M, G&+&+&+&-&+&o&+&+&& \\ \hline
 Process Calculi (CCS, CSP, LOToS)&MoD&+&M&-&o&&&&&&&& \\ \hline
 RSL (RAISE Specification Language)&MoD&+&M&+&+&+&-&o&+&o&+&+& \\ \hline
 State Machines&MoD&+&M, G&-&+&-&-&-&+&+&+&& \\ \hline
 TL (Temporal Logic)&MoD&+&M&-&+&-&-&-&o&&&+& \\ \hline
-UML 2.0 (Unified Modelling Language) and SysML (System Modelling Language)&MoD&o&T, G&+&+&+&o&+&+&+&+&o& \\ \hline
+UML 2.0 (Unified Modelling Language) and SysML (System Modelling Language)&MoD&o&T, G&+&+&+&-&+&+&+&+&o& \\ \hline
 VDM (Vienna Development Method)&Tech&+&M&+&o&-&-&+&+&o&+&+& \\ \hline
 Z, B - Method and Event B&Tech&+&M, G&+&+&o&-&+&+&o&+&+& \\ \hline
 
@@ -377,22 +381,38 @@ Links:
 
 Bibliography:
 
-\section{Lustre/ Textual Scade}
-
+\section{Lustre/ Textual and Graphical Scade}
 
 	\textbf{Characteristics}
 
+SCADE is a formal modelling language targeted for safety-critical embedded control applications in the avionics, rail, automotive and industrial automation domain. SCADE source code can be written as text (for anyone who likes writing plain text) or (more usual) as schematic diagrams. SCADE models are synchronously clocked data flow and state machines, that can be nested and intermixed with each other without limitations. 
+SCADE provides DO-178B- and EN50128-certified code generators producing C or ADA code as output. SCADE models are therefore concrete, deterministic, executable and verifiable; it allows the production of rapid prototype as well as of safety related target system software. 
 
 	\textbf{Typical applications}
+
+Safety critical systems like
+\vspace{-10pt}
+\begin{itemize}[topsep=2pt, partopsep=2pt,itemsep=2pt,parsep=2pt]
+  \item Rail interlocking systems
+  \item Rail track vacancy detection systems
+  \item Rail train control systems
+  \item Rail Level-crossing protection systems
+  \item Avionic flight controller
+\end{itemize}
 
 
 	\textbf{Standards}
 
 
 	\textbf{References}
+	
+\url{http://www.mobility.siemens.com/mobility/global/en/interurban-mobility/rail-solutions/rail-automation/Pages/rail-automation.aspx/} \\[4pt]	
 
 Links:
 
+\url{http://esterel-technologies.com/} \\[4pt]
+\url{http://www.interested-ip.eu/}\\[4pt]
+\url{http://http://www.interested-ip.eu/final-report.html/} \\[4pt]
 
 
 Bibliography:
@@ -707,7 +727,7 @@ Independent of the concrete methodology and the used means of description the in
 
 \section{Transformation of formal requirement specifications in formal software and software module design and architecture descriptions}
 
-To write their formal software requirement specifications and to define the software architecture and design based on these most organisations presented a model-based development process using different formal models to describe the software on different abstraction levels. In doing so the railway operators mostly focus on the high-level description of system and software functionality, while the actual software developers concentrate on modeling the more concrete software architecture and design. By using formal methods and formal refinement certain steps of the top-down modeling can be automated. Since every organisation used a modular approach as it is mandated by \ref{EN50128:2011} for all SIL Levels the refinement is also used to separate the functionalities of different modules. Thereby the The detailed software model can than be used for an automatic or semi-automatic source code generation. To model the interactions with adjacent systems including human operators a model representing the environment is needed. Overall our interviews have confirmed that a variation the top-down model-based software development shown in figure \ref{fig: MBD} is common practice at least for the development of safety related software. 
+To write their formal software requirement specifications and to define the software architecture and design based on these most organisations presented a model-based development process using different formal models to describe the software on different abstraction levels. In doing so the railway operators mostly focus on the high-level description of system and software functionality, while the actual software developers concentrate on modeling the more concrete software architecture and design. By using formal methods and formal refinement certain steps of the top-down modeling can be automated. Since every organisation used a modular approach as it is mandated by \ref{EN50128:2011} for all SIL Levels the refinement is also used to separate the functionalities of different modules. Thereby the detailed software model can than be used for an automatic or semi-automatic source code generation. To model the interactions with adjacent systems including human operators a model representing the environment is needed. Overall our interviews have confirmed that a variation the top-down model-based software development shown in figure \ref{fig: MBD} is common practice at least for the development of safety related software. 
 
 \begin{figure}[h]
 \centering
@@ -934,7 +954,7 @@ PRISM&University of Oxford&open source&BDD and MTBDD&&&&&&+&&&&&&o \\ \hline
 ProB&Formal Mind GmbH&open source&B&&&&&&+&&+&&+&&o \\ \hline
 ProR&Formal Mind GmbH&open source&ReqIF 1.0.1&+&&&&&&&&&+&&+ \\ \hline
 Rational Architect&IBM&commercial&SysML und UML 2.0&+&+&&+&+&&&+&+&+&&+ \\ \hline
-SCADE/  Suite Design Verifier&Esterel Technologies S.A.&commercial&Lustre/ State machines&&+&+&+&+&+&&+&&+&&o \\ \hline
+SCADE Suite &Esterel Technologies S.A.&commercial&Lustre / Data Flow (Logic) + State machines&&+&+&+&+&+&+&+&+&+&&+ \\ \hline
 Simulink/ Design Verifier&MathWorks&commercial&Block diagramms&&+&+&+&+&o&&+&&+&&o \\ \hline
 SPARK GPL/ GNATprove&AdaCore&open source&Spark ADA&&+&&&+&+&+&+&&+&&o \\ \hline
 SPIN&Bell Labs&open source&PROMELA&&&&&&+&+&+&+&&&o \\ \hline
@@ -946,7 +966,7 @@ $\pi$-Tool&IQST&commercial&Petri Nets&&+&+&+&&+&&+&&+&&o \\ \hline
 \end{landscape}
 %\end{sidewaystable}
 
-The focus of the tool discussion during the interviews has been on modeling tools as the collection of tools in table \ref{tab: Tools} shows. Most companies use commercial tools like Artisan Studio, Atelier B,  Rational Architect  SCADE or Simulink to build their software models by using the implemented means of description and the implemented methods to generate reliable source code in C or ADA languages. 
+The focus of the tool discussion during the interviews has been on modeling tools as the collection of tools in table \ref{tab: Tools} shows. Most companies use commercial tools like Artisan Studio, Atelier B,  Rational Architect,  SCADE or Simulink to build their software models by using the implemented means of description and the implemented methods to generate reliable source code in C or ADA languages. 
 
 To use formal proof for these models usually on of the available commercial tools which fits to the modeling tool is chosen and than customised to a degree that it provides all needed functionalities. Usually this is handled in cooperation with the tool developer. Some companies have a lot of experience with tools for modeling and model proofing and therefore mainly handle the customisation in house.
 
@@ -2013,52 +2033,61 @@ The following sections will give a short introduction of every main tool present
 	Bibliography:
 
 
-\section{SCADE/  Suite Design Verifier}
+\section{SCADE Suite / SCADE System / SCADE LifeCycle}
 
 	\textbf{Developer}
 
-	Company: 
+	Company: Esterel Technologies S.A.
 
-	Webside:
+	Webside: \url{http://esterel-technologies.com/} \\[2pt]
 
-	Contact address:
+	Contact address: Parc Euclide, 8 rue Blaise Pasc, 78990 Elancourt, France
 
 	Other  Participators:
-
-
 
 	\textbf{Typical applications}
 
 	Field of usage:
+	Safety critical systems like
+\vspace{-10pt}
+\begin{itemize}[topsep=2pt, partopsep=2pt,itemsep=2pt,parsep=2pt]
+  \item Rail interlocking systems
+  \item Rail track vacancy detection systems
+  \item Rail train control systems
+  \item Rail Level-crossing protection systems
+  \item Avionic flight controller
+\end{itemize}
 
 	%Brief introduction to what the tool does
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.6]{SCADE_Overview.png}
+\caption{SCADE Suite Overview}
+\label{fig:SCADE_Suite_Overview}
+\end{figure}
 
 	%Applicability
-	%Key capabilities
-	Input:
+	
+SCADE is a formal modelling language targeted for safety-critical embedded control applications in the avionics, rail, automotive and industrial automation domain. SCADE source code can be written as text (for anyone who likes writing plain text) or (more usual) as schematic diagrams. SCADE models are synchronously clocked data flow and state machines, that can be nested and intermixed with each other without limitations. 
+SCADE provides DO-178B- and EN50128-certified code generators producing C or ADA code as output. SCADE models are therefore concrete, deterministic, executable and verifiable; it allows the production of rapid prototype as well as of safety related target system software. 
 
-	Output:
+SCADE comes with an integrated development environment (SCADE Suite IDE) including code generator, graphical simulator, model checker/prover, model test coverage analyzer, report generators, version and requirements management gateway with interfaces to various other tools like static code and timing analyzers, System/SysML modelling tools etc.. The IDE provides automatization interfaces to be controlled from external tools, and all SCADE tools itself can also be used in batch mode. In addition, plugins for Eclipse integration are available. 
 
-	% Main restrictions e.g. only a subset of the target language is covered
+The SCADE paradigm of synchronously clocked data flow and state machines works perfect for embedded control or industry automation software. It is less suitable for tasks like text processing or computer graphic applications. SCADE models do not only describe the structure of software; instead, they are the software implementation itself too. System architectures typically require a higher abstraction means of description at top level like SysML. While SysML modelling can be achieved with any SysML tools, SCADE System provides an automatic transformation from SysML to SCADE. 
 
-	% Manual or automated use of the tool e.g. which steps are manual and automatic in the use of the tool.
-
-	% Expertise level e.g. which prerequisite is needed to use the tool
-
-
-	Integration in a tool chain
-	%Currently distributed: Yes/No
-	%Underlying technologies E.g. Framework, .NET vs. Java, etc.
-
-	%Describe equirement to install/run the tool (all that is necessary to make the tool work fine: OS, Java version, dependencies with other tools, Eclipse version, ...)
-
+For a start with SCADE a learning phase of one week should be planned.   
 
 	\textbf{License}
+	
+	Commercial licenses + academic license program
 
 
 	\textbf{References}
 
 	Bibliography:
+	
+	\url{http://www.interested-ip.eu/}\\[4pt]
+	\url{http://http://www.interested-ip.eu/final-report.html/} \\[4pt]
 
 
 \section{Simulink/ Design Verifier}
@@ -2592,7 +2621,7 @@ Ada and Spark&MoD&o&+&&&+&+&-&+&-&+&+&-&-&+&+ \\ \hline
 Alloy&MoD&+&&+&&+&+&o&+&o&+&o&-&-&-&+ \\ \hline
 CNL (Controlled Natural Language)&MoD&+&+&+&&-&-&-&+&-&+&o&-&o&-&o \\ \hline
 HOL (High Order Logic)&MoD&+&&+&&+&+&o&+&+&+&o&+&-&-&o \\ \hline
-Lustre/ Textual Scade&MoD&+&+&&&+&+&+&+&+&+&+&-&-&o&+ \\ \hline
+Lustre / Textual and Graphical Scade&MoD&+&+&&+&+&+&+&+&+&+&+&-&-&o&+ \\ \hline
 OBJ&MoD&+&&+&&+&+&-&+&-&+&o&-&&& \\ \hline
 RSL (RAISE Specification Language)&MoD&+& &+& &+&+& &+& &+&+&+&-&o&+\\ \hline
 Timed Petri Nets&MoD&+&o&o&+&+&+&+&+&+&+&+&+&-&+&o\\ \hline
